@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import YouTube from "react-youtube";
+import Player from "./Player";
 
+//https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed
+//https://www.youtube.com/watch?v=XbqFZMIidZI&ab_channel=PopCornRest-TikTok
+//https://www.youtube.com/watch?v=hS5CfP8n_js&ab_channel=Mr.Monk
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello world</h1>
+      <Player />
+      <button>Mute</button>
     </div>
   );
 }
