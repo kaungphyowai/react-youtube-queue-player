@@ -1,6 +1,6 @@
 import "./App.css";
-import YouTube from "react-youtube";
 import Player from "./Player";
+import Admin from "./Admin";
 
 //https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed
 //https://www.youtube.com/watch?v=XbqFZMIidZI&ab_channel=PopCornRest-TikTok
@@ -10,7 +10,8 @@ function App() {
     <div>
       <h1>Hello world</h1>
       <Player />
-      <button>Mute</button>
+      <hr />
+      <Admin />
     </div>
   );
 }

@@ -19,7 +19,7 @@ function Player() {
     event.target.unMute();
   }
   const onEnd = (event) => {
-    if (videos.length == currentVideo + 1) {
+    if (videos.length === currentVideo + 1) {
       console.log("this is the end");
       return;
     }
