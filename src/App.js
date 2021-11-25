@@ -35,7 +35,7 @@ function App() {
   return (
     <div>
       <h1>Hello world</h1>
-      <Player database={database} videos={videos} />
+      <Player database={database} videos={videos} getData={getData}  />
       <hr />
       <Admin database={database} videos={videos} getData={getData} />
     </div>
