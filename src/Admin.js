@@ -1,11 +1,14 @@
 import React from 'react'
 import  { useState } from 'react'
-
-const Admin = () => {
+import {ref, set} from 'firebase/database';
+const Admin = (props) => {
     const [Video, setVideo] = useState("")
+    let dataRef = ref(props.db, "/videos")
     const Submit = (event) => {
         event.preventDefault();
         setVideo('');
+        set(dataRef, [1,2,3]);
+          console.log("pee")
         //check if this is a youtube video
             //if yes, get the id of the video
             //if not, Display this is not a youtube video text in red   

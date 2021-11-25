@@ -10,7 +10,8 @@ const firebaseConfig = {
   projectId: "react--queue-player",
   storageBucket: "react--queue-player.appspot.com",
   messagingSenderId: "393257056440",
-  appId: "1:393257056440:web:7686440fec372fb4961c4d"
+  appId: "1:393257056440:web:7686440fec372fb4961c4d",
+  databaseURL: "https://react--queue-player-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
 // Initialize Firebase
