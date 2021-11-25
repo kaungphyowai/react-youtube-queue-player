@@ -16,26 +16,28 @@ let dataRef = ref(database)
 
 function App() {
   const [videos, setVideos] = useState('')
-  //data
-  useEffect(() => {
+
+  const getData = () => {
     get(child(dataRef, '/videos')).then((snapshot) => {
-      if (snapshot.exists()) {
-        let body = snapshot.val();
-        setVideos(body.videos)
-        console.log(videos)
-      } else {
-        console.log("No data available");
-      }
+     
+        setVideos(snapshot.val())
+      
     }).catch((error) => {
       console.error(error);
     });
+  }
+
+  //data
+  useEffect(() => {
+    getData();
   }, [])
+
   return (
     <div>
       <h1>Hello world</h1>
       <Player database={database} videos={videos} />
       <hr />
-      <Admin database={database} videos={videos} />
+      <Admin database={database} videos={videos} getData={getData} />
     </div>
   );
 }

@@ -1,33 +1,53 @@
-import React from 'react'
-import  { useState } from 'react'
-import { set} from 'firebase/database';
-import {ref} from 'firebase/database';
+import React from "react";
+import { useState } from "react";
+import { set } from "firebase/database";
+import { ref } from "firebase/database";
 const Admin = (props) => {
-    const [Video, setVideo] = useState("")
-    const Submit = (event) => {
-        event.preventDefault();
-        let newVideos = props.videos;
-        newVideos.push(Video);
-        set(ref(props.database, '/videos'), newVideos);
-        setVideo('');
-        //check if this is a youtube video
-            //if yes, get the id of the video
-            //if not, Display this is not a youtube video text in red   
-    }
-    const onChange = (event) => {
-        setVideo(event.target.value);
-    }
-    return (
-        <div>
-            <form onSubmit={Submit} >
-            <label for="fname">Input Your Video:</label>
-            <input type="text" id="fname" name="fname" onChange={onChange} value={Video} />
-            <br />
-            <br />
-            <button type="submit" >Enter</button>
-            </form>
-        </div>
-    )
-}
+  const [Video, setVideo] = useState("");
 
-export default Admin
+  const Submit = (event) => {
+    event.preventDefault();
+    let containYoutube = /youtube.com/.test(Video)
+    let containVideoId = /v=.{11}/.test(Video)
+    if(containYoutube && containVideoId){
+
+        let newVideos = Array.isArray(props.videos) ? props.videos : [] ;
+        newVideos.push(Video);
+        set(ref(props.database, '/videos'), newVideos).then(rel => props.getData());
+        setVideo('');
+    }else{
+        alert("It have to Youtube Link");
+        setVideo("");
+    }
+    
+  };
+
+  const onChange = (event) => {
+    setVideo(event.target.value);
+  };
+
+  const clearQueue = () => {
+    set(ref(props.database, "/videos"), null);
+    props.getData();
+  };
+  return (
+    <div>
+      <form onSubmit={Submit}>
+        <label for="fname">Input Your Video:</label>
+        <input
+          type="text"
+          id="fname"
+          name="fname"
+          onChange={onChange}
+          value={Video}
+        />
+        <br />
+        <br />
+        <button type="submit">Enter</button>
+      </form>
+      <button onClick={clearQueue}>Clear Queue</button>
+    </div>
+  );
+};
+
+export default Admin;
