@@ -12,7 +12,9 @@ const Admin = (props) => {
     if(containYoutube && containVideoId){
 
         let newVideos = Array.isArray(props.videos) ? props.videos : [] ;
-        newVideos.push(Video);
+        //get the id of the video
+        let youtubeId = Video.replace(/.+v=(.{11}).+/, '$1')
+        newVideos.push(youtubeId);
         set(ref(props.database, '/videos'), newVideos).then(rel => props.getData());
         setVideo('');
     }else{
