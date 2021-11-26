@@ -17,6 +17,12 @@ function Player(props) {
       remainingVideos.shift();
       set(ref(props.database, '/videos'), remainingVideos);
   };
+
+  const unMute = (event) => {
+    //unmute the video in case if the page already has interaction
+    event.target.unMute();
+    event.target.setVolume(40)
+  }
   return (
     <div>
       {
@@ -30,6 +36,7 @@ function Player(props) {
             videoId={props.videos[0]}
             opts={opts}
             onEnd={onEnd}
+            onPlay={unMute}
           />
         )
       }
