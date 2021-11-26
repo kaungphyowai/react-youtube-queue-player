@@ -3,7 +3,7 @@ import Player from "./Player";
 import Admin from "./Admin";
 import firebaseApp from './firebase/firebaseApp';
 import { getDatabase } from "firebase/database";
-import {ref, child, get} from 'firebase/database';
+import {ref, onValue} from 'firebase/database';
 import { useState, useEffect } from "react";
 //https://www.youtube.com/watch?v=jNQXAC9IVRw&ab_channel=jawed
 //https://www.youtube.com/watch?v=XbqFZMIidZI&ab_channel=PopCornRest-TikTok
@@ -11,33 +11,30 @@ import { useState, useEffect } from "react";
 
 //database locaiton
 let database = getDatabase(firebaseApp)
-let dataRef = ref(database)
+let videosRef = ref(database, '/videos')
 
 
 function App() {
-  const [videos, setVideos] = useState('')
-
-  const getData = () => {
-    get(child(dataRef, '/videos')).then((snapshot) => {
-     
-        setVideos(snapshot.val())
-      
-    }).catch((error) => {
-      console.error(error);
-    });
-  }
-
-  //data
+  const [videos, setVideos] = useState([])
   useEffect(() => {
-    getData();
-  }, [])
+  onValue(videosRef, (snapshot) => {
+    const data = snapshot.val();
+    setVideos(data);
+  })
+  
+}, [])
+
+//delete this in production
+  useEffect(() => {
+    console.log(videos)
+  }, [videos])
 
   return (
     <div>
       <h1>Hello world</h1>
-      <Player database={database} videos={videos} getData={getData}  />
+      <Player database={database} videos={videos}  />
       <hr />
-      <Admin database={database} videos={videos} getData={getData} />
+      <Admin database={database} videos={videos} />
     </div>
   );
 }

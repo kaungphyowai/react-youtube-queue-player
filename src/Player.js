@@ -9,13 +9,13 @@ function Player(props) {
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
-      mute: 1,
+      mute: 1
     },
   };
   const onEnd = (event) => {
-      let newArray = props.videos;
-      newArray.shift();
-      set(ref(props.database, '/videos'), newArray).then(rel => props.getData());
+      let remainingVideos = props.videos;
+      remainingVideos.shift();
+      set(ref(props.database, '/videos'), remainingVideos);
   };
   return (
     <div>

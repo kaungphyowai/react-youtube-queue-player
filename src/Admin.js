@@ -11,13 +11,11 @@ const Admin = (props) => {
     let containVideoId = /v=.{11}/.test(Video)
     if(containYoutube && containVideoId){
 
-        let newVideos = Array.isArray(props.videos) ? props.videos : [] ;
+        let newVideos = props.videos !== null ? props.videos : [] ;
         //get the id of the video
         let youtubeId = Video.replace(/.+v=(.{11}).*/, '$1')
         newVideos.push(youtubeId);
-        console.log(newVideos);
-        await set(ref(props.database, '/videos'), newVideos);
-        props.getData();
+        set(ref(props.database, '/videos'), newVideos);
         setVideo('');
     }else{
         alert("It have to Youtube Link");
@@ -31,8 +29,7 @@ const Admin = (props) => {
   };
 
   const clearQueue = () => {
-    set(ref(props.database, "/videos"), null);
-    props.getData();
+    set(ref(props.database, "/videos"), []);
   };
   return (
     <div>
