@@ -5,7 +5,7 @@ import { ref } from "firebase/database";
 const Admin = (props) => {
   const [Video, setVideo] = useState("");
 
-  const Submit = (event) => {
+  const Submit = async (event) =>  {
     event.preventDefault();
     let containYoutube = /youtube.com/.test(Video)
     let containVideoId = /v=.{11}/.test(Video)
@@ -13,9 +13,11 @@ const Admin = (props) => {
 
         let newVideos = Array.isArray(props.videos) ? props.videos : [] ;
         //get the id of the video
-        let youtubeId = Video.replace(/.+v=(.{11}).+/, '$1')
+        let youtubeId = Video.replace(/.+v=(.{11}).*/, '$1')
         newVideos.push(youtubeId);
-        set(ref(props.database, '/videos'), newVideos).then(rel => props.getData());
+        console.log(newVideos);
+        await set(ref(props.database, '/videos'), newVideos);
+        props.getData();
         setVideo('');
     }else{
         alert("It have to Youtube Link");
