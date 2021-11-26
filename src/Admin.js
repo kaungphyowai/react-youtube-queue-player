@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { set } from "firebase/database";
 import { ref } from "firebase/database";
+import './Admin.css'
+import { Link } from "react-router-dom";
 const Admin = (props) => {
   const [Video, setVideo] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSpeaker, setisSpeaker] = useState(false)
   const Submit = async (event) =>  {
     event.preventDefault();
     setIsSubmitting(true);
@@ -33,22 +36,32 @@ const Admin = (props) => {
   const clearQueue = () => {
     set(ref(props.database, "/videos"), []);
   };
+
+  const goToPlayer = () => {
+    let result = window.confirm("ဖွင့်မဲ့သူတယောက်ဘဲ ဒီ link ကိုသွားပါ (ok or cancel)");
+    result ? setisSpeaker(true) : setisSpeaker(false)
+  }
   return (
-    <div>
-      <form onSubmit={Submit}>
-        <label for="fname">Input Your Video:</label>
+    <div className="center dark">
+      <h1 className='header'>Life Just Better With Music</h1>
+      <form onSubmit={Submit} className="form">
         <input
           type="text"
           id="fname"
           name="fname"
           onChange={onChange}
           value={Video}
+          className="textarea"
+          placeholder="https://www.youtube.com/..."
         />
-        <br />
-        <br />
-        <button type="submit">Enter</button>
+        <button type="submit" hidden={true}></button>
       </form>
-      <button onClick={clearQueue} disabled={isSubmitting}>Clear Queue</button>
+
+      <button onClick={clearQueue} disabled={isSubmitting} className="clear">Clear Queue</button>
+      <div className="link" onClick={goToPlayer}>
+
+      <Link to={isSpeaker ? '/player' : '#'} >Speaker သမား</Link>
+      </div>
     </div>
   );
 };

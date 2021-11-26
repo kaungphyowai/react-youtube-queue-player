@@ -1,6 +1,8 @@
 import YouTube from "react-youtube";
 import { set } from "firebase/database";
 import { ref } from "firebase/database";
+import "./Player.css";
+
 function Player(props) {
   //https://youtu.be/py3zoTVmm2s
   const opts = {
@@ -24,7 +26,7 @@ function Player(props) {
     event.target.setVolume(40)
   }
   return (
-    <div>
+    <div className="center background">
       {
         props.videos === null ?
         (
@@ -37,6 +39,7 @@ function Player(props) {
             opts={opts}
             onEnd={onEnd}
             onPlay={unMute}
+            className="player"
           />
         )
       }
