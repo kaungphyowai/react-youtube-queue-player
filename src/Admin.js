@@ -60,7 +60,7 @@ const Admin = (props) => {
       <button onClick={clearQueue} disabled={isSubmitting} className="clear">Clear Queue</button>
       <div className="link" onClick={goToPlayer}>
 
-      <Link to={isSpeaker ? '/player' : '#'} >Speaker သမား</Link>
+      <Link to={isSpeaker ? 'player' : '#'} >Speaker သမား</Link>
       </div>
     </div>
   );
