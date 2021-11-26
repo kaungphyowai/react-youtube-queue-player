@@ -4,22 +4,24 @@ import { set } from "firebase/database";
 import { ref } from "firebase/database";
 const Admin = (props) => {
   const [Video, setVideo] = useState("");
-
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const Submit = async (event) =>  {
     event.preventDefault();
+    setIsSubmitting(true);
     let containYoutube = /youtube.com/.test(Video)
     let containVideoId = /v=.{11}/.test(Video)
     if(containYoutube && containVideoId){
-
         let newVideos = props.videos !== null ? props.videos : [] ;
         //get the id of the video
         let youtubeId = Video.replace(/.+v=(.{11}).*/, '$1')
         newVideos.push(youtubeId);
         set(ref(props.database, '/videos'), newVideos);
         setVideo('');
+        setIsSubmitting(false);
     }else{
         alert("It have to Youtube Link");
         setVideo("");
+        setIsSubmitting(false);
     }
     
   };
@@ -46,7 +48,7 @@ const Admin = (props) => {
         <br />
         <button type="submit">Enter</button>
       </form>
-      <button onClick={clearQueue}>Clear Queue</button>
+      <button onClick={clearQueue} disabled={isSubmitting}>Clear Queue</button>
     </div>
   );
 };
