@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-youtube-queue-player/static/css/main.d6a75b46.chunk.css",
-    "main.js": "/react-youtube-queue-player/static/js/main.8500f4e3.chunk.js",
-    "main.js.map": "/react-youtube-queue-player/static/js/main.8500f4e3.chunk.js.map",
-    "runtime-main.js": "/react-youtube-queue-player/static/js/runtime-main.3fcc4b88.js",
-    "runtime-main.js.map": "/react-youtube-queue-player/static/js/runtime-main.3fcc4b88.js.map",
-    "static/js/2.f625de7b.chunk.js": "/react-youtube-queue-player/static/js/2.f625de7b.chunk.js",
-    "static/js/2.f625de7b.chunk.js.map": "/react-youtube-queue-player/static/js/2.f625de7b.chunk.js.map",
-    "static/js/3.16af9a08.chunk.js": "/react-youtube-queue-player/static/js/3.16af9a08.chunk.js",
-    "static/js/3.16af9a08.chunk.js.map": "/react-youtube-queue-player/static/js/3.16af9a08.chunk.js.map",
+    "main.css": "/react-youtube-queue-player/static/css/main.26aac5d5.chunk.css",
+    "main.js": "/react-youtube-queue-player/static/js/main.bd57f13b.chunk.js",
+    "main.js.map": "/react-youtube-queue-player/static/js/main.bd57f13b.chunk.js.map",
+    "runtime-main.js": "/react-youtube-queue-player/static/js/runtime-main.a940023b.js",
+    "runtime-main.js.map": "/react-youtube-queue-player/static/js/runtime-main.a940023b.js.map",
+    "static/js/2.2ebcc71f.chunk.js": "/react-youtube-queue-player/static/js/2.2ebcc71f.chunk.js",
+    "static/js/2.2ebcc71f.chunk.js.map": "/react-youtube-queue-player/static/js/2.2ebcc71f.chunk.js.map",
+    "static/js/3.371eaffd.chunk.js": "/react-youtube-queue-player/static/js/3.371eaffd.chunk.js",
+    "static/js/3.371eaffd.chunk.js.map": "/react-youtube-queue-player/static/js/3.371eaffd.chunk.js.map",
     "index.html": "/react-youtube-queue-player/index.html",
-    "static/css/main.d6a75b46.chunk.css.map": "/react-youtube-queue-player/static/css/main.d6a75b46.chunk.css.map",
-    "static/js/2.f625de7b.chunk.js.LICENSE.txt": "/react-youtube-queue-player/static/js/2.f625de7b.chunk.js.LICENSE.txt"
+    "static/css/main.26aac5d5.chunk.css.map": "/react-youtube-queue-player/static/css/main.26aac5d5.chunk.css.map",
+    "static/js/2.2ebcc71f.chunk.js.LICENSE.txt": "/react-youtube-queue-player/static/js/2.2ebcc71f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3fcc4b88.js",
-    "static/js/2.f625de7b.chunk.js",
-    "static/css/main.d6a75b46.chunk.css",
-    "static/js/main.8500f4e3.chunk.js"
+    "static/js/runtime-main.a940023b.js",
+    "static/js/2.2ebcc71f.chunk.js",
+    "static/css/main.26aac5d5.chunk.css",
+    "static/js/main.bd57f13b.chunk.js"
   ]
 }
