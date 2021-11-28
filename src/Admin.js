@@ -14,11 +14,13 @@ const Admin = (props) => {
     let containYoutube = /youtube.com/.test(Video)
     let containVideoId = /v=.{11}/.test(Video)
     if(containYoutube && containVideoId){
-        let newVideos = props.videos !== null ? props.videos : [] ;
+      //get the current user videos, if empty, make an empty array
+        let newVideos = props.videos[props.user.displayName] ? props.videos[props.user.displayName] : [] ;
         //get the id of the video
+        console.log(newVideos)
         let youtubeId = Video.replace(/.+v=(.{11}).*/, '$1')
         newVideos.push(youtubeId);
-        set(ref(props.database, '/videos'), newVideos);
+        set(ref(props.database, '/' + props.user.displayName), newVideos);
         setVideo('');
     }else{
         alert("It have to Youtube Link");

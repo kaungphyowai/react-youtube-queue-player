@@ -17,7 +17,7 @@ const auth = getAuth();
 
 //database locaiton
 let database = getDatabase(firebaseApp)
-let videosRef = ref(database, '/videos')
+let videosRef = ref(database, '/')
 
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       setuser(user)
+      console.log("displayName "+ user.displayName)
       // ...
     } else {
       // User is signed out
@@ -53,6 +54,11 @@ function App() {
     const auth = getAuth();
     console.log("this is the user" + auth.currentUser)
   }, [videos])
+
+  //delete this in production
+  useEffect(() => {
+    console.log("isSubmitting " + isSubmitting)
+  }, [isSubmitting])
 
   return (
     <div className="fullheight">

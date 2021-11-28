@@ -26,7 +26,7 @@ function Player(props) {
     event.target.setVolume(40)
   }
   const clearQueue = () => {
-    set(ref(props.database, "/videos"), []);
+    set(ref(props.database), []);
   };
   return (
     <div className="center background">
