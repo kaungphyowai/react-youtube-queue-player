@@ -25,6 +25,9 @@ function Player(props) {
     event.target.unMute();
     event.target.setVolume(40)
   }
+  const clearQueue = () => {
+    set(ref(props.database, "/videos"), []);
+  };
   return (
     <div className="center background">
       {
@@ -43,6 +46,7 @@ function Player(props) {
           />
         )
       }
+      <button onClick={clearQueue}  className="clear">Clear Queue</button>
     </div>
   );
 }

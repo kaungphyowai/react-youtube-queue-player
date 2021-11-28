@@ -10,15 +10,7 @@
     color: black;
 }
 
-.clear{
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    padding: 10px 20px;
-    background-color: red;
-    border-radius: 20px;
-    color: black;
-}
+
 .center{
     display: flex;
   justify-content: center;

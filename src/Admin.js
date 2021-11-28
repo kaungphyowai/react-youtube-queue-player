@@ -33,9 +33,7 @@ const Admin = (props) => {
     setVideo(event.target.value);
   };
 
-  const clearQueue = () => {
-    set(ref(props.database, "/videos"), []);
-  };
+  
 
   const goToPlayer = () => {
     let result = window.confirm("ဖွင့်မဲ့သူတယောက်ဘဲ ဒီ link ကိုသွားပါ (ok or cancel)");
@@ -54,10 +52,10 @@ const Admin = (props) => {
           className="textarea"
           placeholder="https://www.youtube.com/..."
         />
-        <button type="submit" hidden={true}></button>
+        <button type="submit" hidden={true} disabled={isSubmitting}></button>
       </form>
 
-      <button onClick={clearQueue} disabled={isSubmitting} className="clear">Clear Queue</button>
+      
       <div className="link" onClick={goToPlayer}>
 
       <Link to={isSpeaker ? 'player' : '#'} >Speaker သမား</Link>
