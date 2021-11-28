@@ -4,13 +4,13 @@ import { set } from "firebase/database";
 import { ref } from "firebase/database";
 import './Admin.css'
 import { Link } from "react-router-dom";
+import BounceLoader from "react-spinners/BounceLoader";
 const Admin = (props) => {
   const [Video, setVideo] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSpeaker, setisSpeaker] = useState(false)
   const Submit = async (event) =>  {
     event.preventDefault();
-    setIsSubmitting(true);
+    props.setIsSubmitting(true);
     let containYoutube = /youtube.com/.test(Video)
     let containVideoId = /v=.{11}/.test(Video)
     if(containYoutube && containVideoId){
@@ -20,11 +20,10 @@ const Admin = (props) => {
         newVideos.push(youtubeId);
         set(ref(props.database, '/videos'), newVideos);
         setVideo('');
-        setIsSubmitting(false);
     }else{
         alert("It have to Youtube Link");
         setVideo("");
-        setIsSubmitting(false);
+        props.setIsSubmitting(false);
     }
     
   };
@@ -41,6 +40,9 @@ const Admin = (props) => {
   }
   return (
     <div className="center dark">
+      {
+        props.isSubmitting ? <BounceLoader size={150} color={"#123abc"} loading={props.isSubmitting} speedMultiplier={1.5} /> :
+      <div>
       <h1 className='header'>Life Just Better With Music</h1>
       <form onSubmit={Submit} className="form">
         <input
@@ -52,7 +54,7 @@ const Admin = (props) => {
           className="textarea"
           placeholder="https://www.youtube.com/..."
         />
-        <button type="submit" hidden={true} disabled={isSubmitting}></button>
+        <button type="submit" hidden={true} disabled={props.isSubmitting}></button>
       </form>
 
       
@@ -60,6 +62,8 @@ const Admin = (props) => {
 
       <Link to={isSpeaker ? 'player' : '#'} >Speaker သမား</Link>
       </div>
+      </div>
+      }
     </div>
   );
 };
